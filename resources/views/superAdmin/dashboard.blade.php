@@ -1,660 +1,380 @@
 @extends('layouts.admin')
 @section('content')
+       <div class="container-fluid page-body-wrapper">
+      <!-- partial:partials/_sidebar.html -->
+      @include('superAdmin.includes._sidenav')
 
-     <div class="container-fluid-full">
-		<div class="row-fluid">
-				
-			<!-- start: Main Menu -->
-			@include('superAdmin.includes._sidenav')
-			<!-- end: Main Menu -->
-			
-			@include('layouts.includes._noscript')
-			
-			<!-- start: Content -->
-			<div id="content" class="span10">
-			
-			
-			<ul class="breadcrumb">
-				<li>
-					<i class="icon-home"></i>
-					<a href="index.html">Home</a> 
-					<i class="icon-angle-right"></i>
-				</li>
-				<li><a href="#">Dashboard</a></li>
-			</ul>
+      <!-- partial -->
+      <div class="main-panel">
+        
+      <div class="content-wrapper">
+          <div class="row">
+            <div class="col-12">
+              <span class="d-flex align-items-center purchase-popup">
+                <p>Like what you see? Check out our premium version for more.</p>
+                <a href="https://github.com/BootstrapDash/PurpleAdmin-Free-Admin-Template" target="_blank" class="btn ml-auto download-button">Download Free Version</a>
+                <a href="https://www.bootstrapdash.com/product/purple-bootstrap-4-admin-template/" target="_blank" class="btn purchase-button">Upgrade To Pro</a>
+                <i class="mdi mdi-close popup-dismiss"></i>
+              </span>
+            </div>
+          </div>
+          <div class="page-header">
+            <h3 class="page-title">
+              <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                <i class="mdi mdi-home"></i>                 
+              </span>
+              Dashboard
+            </h3>
+            <nav aria-label="breadcrumb">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item active" aria-current="page">
+                  <span></span>Overview
+                  <i class="mdi mdi-alert-circle-outline icon-sm text-primary align-middle"></i>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="row">
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-danger card-img-holder text-white">
+                <div class="card-body">
+                  <img src="{{asset('images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image"/>
+                  <h4 class="font-weight-normal mb-3">Weekly Sales
+                    <i class="mdi mdi-chart-line mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">$ 15,0000</h2>
+                  <h6 class="card-text">Increased by 60%</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-info card-img-holder text-white">
+                <div class="card-body">
+                  <img src="{{asset('images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image"/>                  
+                  <h4 class="font-weight-normal mb-3">Weekly Orders
+                    <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">45,6334</h2>
+                  <h6 class="card-text">Decreased by 10%</h6>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 stretch-card grid-margin">
+              <div class="card bg-gradient-success card-img-holder text-white">
+                <div class="card-body">
+                  <img src="{{asset('images/dashboard/circle.svg')}}" class="card-img-absolute" alt="circle-image"/>                                    
+                  <h4 class="font-weight-normal mb-3">Visitors Online
+                    <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                  </h4>
+                  <h2 class="mb-5">95,5741</h2>
+                  <h6 class="card-text">Increased by 5%</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-7 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <div class="clearfix">
+                    <h4 class="card-title float-left">Visit And Sales Statistics</h4>
+                    <div id="visit-sale-chart-legend" class="rounded-legend legend-horizontal legend-top-right float-right"></div>                                     
+                  </div>
+                  <canvas id="visit-sale-chart" class="mt-4"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Traffic Sources</h4>
+                  <canvas id="traffic-chart"></canvas>
+                  <div id="traffic-chart-legend" class="rounded-legend legend-vertical legend-bottom-left pt-4"></div>                                                      
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Recent Tickets</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            Assignee
+                          </th>
+                          <th>
+                            Subject
+                          </th>
+                          <th>
+                            Status
+                          </th>
+                          <th>
+                            Last Update
+                          </th>
+                          <th>
+                            Tracking ID
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <img src="{{asset('images/faces/face1.jpg')}}" class="mr-2" alt="image">
+                            David Grey
+                          </td>
+                          <td>
+                            Fund is not recieved
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-success">DONE</label>
+                          </td>
+                          <td>
+                            Dec 5, 2017
+                          </td>
+                          <td>
+                            WD-12345
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="{{asset('images/faces/face2.jpg')}}" class="mr-2" alt="image">
+                            Stella Johnson
+                          </td>
+                          <td>
+                            High loading time
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-warning">PROGRESS</label>
+                          </td>
+                          <td>
+                            Dec 12, 2017
+                          </td>
+                          <td>
+                            WD-12346
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="{{asset('images/faces/face3.jpg')}}" class="mr-2" alt="image">
+                            Marina Michel
+                          </td>
+                          <td>
+                            Website down for one week
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-info">ON HOLD</label>
+                          </td>
+                          <td>
+                            Dec 16, 2017
+                          </td>
+                          <td>
+                            WD-12347
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <img src="{{asset('images/faces/face4.jpg')}}" class="mr-2" alt="image">
+                            John Doe
+                          </td>
+                          <td>
+                            Loosing control on server
+                          </td>
+                          <td>
+                            <label class="badge badge-gradient-danger">REJECTED</label>
+                          </td>
+                          <td>
+                            Dec 3, 2017
+                          </td>
+                          <td>
+                            WD-12348
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Recent Updates</h4>
+                  <div class="d-flex">
+                    <div class="d-flex align-items-center mr-4 text-muted font-weight-light">
+                      <i class="mdi mdi-account-outline icon-sm mr-2"></i>
+                      <span>jack Menqu</span>
+                    </div>
+                    <div class="d-flex align-items-center text-muted font-weight-light">
+                      <i class="mdi mdi-clock icon-sm mr-2"></i>
+                      <span>October 3rd, 2018</span>
+                    </div>
+                  </div>
+                  <div class="row mt-3">
+                    <div class="col-6 pr-1">
+                      <img src="{{asset('images/dashboard/img_1.jpg')}}" class="mb-2 mw-100 w-100 rounded" alt="image">
+                      <img src="{{asset('images/dashboard/img_4.jpg')}}" class="mw-100 w-100 rounded" alt="image">
+                    </div>
+                    <div class="col-6 pl-1">
+                      <img src="{{asset('images/dashboard/img_2.jpg')}}" class="mb-2 mw-100 w-100 rounded" alt="image">
+                      <img src="{{asset('images/dashboard/img_3.jpg')}}" class="mw-100 w-100 rounded" alt="image">
+                    </div>
+                  </div>
+                  <div class="d-flex mt-5 align-items-top">
+                    <img src="{{asset('images/faces/face3.jpg')}}" class="img-sm rounded-circle mr-3" alt="image">
+                    <div class="mb-0 flex-grow">
+                      <h5 class="mr-2 mb-2">School Website - Authentication Module.</h5>
+                      <p class="mb-0 font-weight-light">It is a long established fact that a reader will be distracted by the readable
+                        content of a page.</p>
+                    </div>
+                    <div class="ml-auto">
+                      <i class="mdi mdi-heart-outline text-muted"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Project Status</h4>
+                  <div class="table-responsive">
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>
+                            #
+                          </th>
+                          <th>
+                            Name
+                          </th>
+                          <th>
+                            Due Date
+                          </th>
+                          <th>
+                            Progress
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            1
+                          </td>
+                          <td>
+                            Herman Beck
+                          </td>
+                          <td>
+                            May 15, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            2
+                          </td>
+                          <td>
+                            Messsy Adam
+                          </td>
+                          <td>
+                            Jul 01, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            3
+                          </td>
+                          <td>
+                            John Richards
+                          </td>
+                          <td>
+                            Apr 12, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-warning" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            4
+                          </td>
+                          <td>
+                            Peter Meggik
+                          </td>
+                          <td>
+                            May 15, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-primary" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            5
+                          </td>
+                          <td>
+                            Edward
+                          </td>
+                          <td>
+                            May 03, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-danger" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            5
+                          </td>
+                          <td>
+                            Ronald
+                          </td>
+                          <td>
+                            Jun 05, 2015
+                          </td>
+                          <td>
+                            <div class="progress">
+                              <div class="progress-bar bg-gradient-info" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- content-wrapper ends -->
+        <!-- partial:partials/_footer.html -->
+        @include('layouts.includes._footer')
+        <!-- partial -->
+      </div>
+      <!-- main-panel ends -->
+    </div>
 
-			<div class="row-fluid">
-				
-				<div class="span3 statbox purple" onTablet="span6" onDesktop="span3">
-					<div class="boxchart">5,6,7,2,0,4,2,4,8,2,3,3,2</div>
-					<div class="number">854<i class="icon-arrow-up"></i></div>
-					<div class="title">visits</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>	
-				</div>
-				<div class="span3 statbox green" onTablet="span6" onDesktop="span3">
-					<div class="boxchart">1,2,6,4,0,8,2,4,5,3,1,7,5</div>
-					<div class="number">123<i class="icon-arrow-up"></i></div>
-					<div class="title">sales</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>
-				</div>
-				<div class="span3 statbox blue noMargin" onTablet="span6" onDesktop="span3">
-					<div class="boxchart">5,6,7,2,0,-4,-2,4,8,2,3,3,2</div>
-					<div class="number">982<i class="icon-arrow-up"></i></div>
-					<div class="title">orders</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>
-				</div>
-				<div class="span3 statbox yellow" onTablet="span6" onDesktop="span3">
-					<div class="boxchart">7,2,2,2,1,-4,-2,4,8,,0,3,3,5</div>
-					<div class="number">678<i class="icon-arrow-down"></i></div>
-					<div class="title">visits</div>
-					<div class="footer">
-						<a href="#"> read full report</a>
-					</div>
-				</div>	
-				
-			</div>		
-
-			<div class="row-fluid">
-				
-				<div class="span8 widget blue" onTablet="span7" onDesktop="span8">
-					
-					<div id="stats-chart2"  style="height:282px" ></div>
-					
-				</div>
-				
-				<div class="sparkLineStats span4 widget green" onTablet="span5" onDesktop="span4">
-
-                    <ul class="unstyled">
-                        
-                        <li><span class="sparkLineStats3"></span> 
-                            Pageviews: 
-                            <span class="number">781</span>
-                        </li>
-                        <li><span class="sparkLineStats4"></span>
-                            Pages / Visit: 
-                            <span class="number">2,19</span>
-                        </li>
-                        <li><span class="sparkLineStats5"></span>
-                            Avg. Visit Duration: 
-                            <span class="number">00:02:58</span>
-                        </li>
-                        <li><span class="sparkLineStats6"></span>
-                            Bounce Rate: <span class="number">59,83%</span>
-                        </li>
-                        <li><span class="sparkLineStats7"></span>
-                            % New Visits: 
-                            <span class="number">70,79%</span>
-                        </li>
-                        <li><span class="sparkLineStats8"></span>
-                            % Returning Visitor: 
-                            <span class="number">29,21%</span>
-                        </li>
-
-                    </ul>
-					
-					<div class="clearfix"></div>
-
-                </div><!-- End .sparkStats -->
-
-			</div>
-			
-			<div class="row-fluid hideInIE8 circleStats">
-				
-				<div class="span2" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox yellow">
-						<div class="header">Disk Space Usage</div>
-						<span class="percent">percent</span>
-						<div class="circleStat">
-                    		<input type="text" value="58" class="whiteCircle" />
-						</div>		
-						<div class="footer">
-							<span class="count">
-								<span class="number">20000</span>
-								<span class="unit">MB</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">50000</span>
-								<span class="unit">MB</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-
-				<div class="span2" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox green">
-						<div class="header">Bandwidth</div>
-						<span class="percent">percent</span>
-						<div class="circleStat">
-                    		<input type="text" value="78" class="whiteCircle" />
-						</div>
-						<div class="footer">
-							<span class="count">
-								<span class="number">5000</span>
-								<span class="unit">GB</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">5000</span>
-								<span class="unit">GB</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-
-				<div class="span2" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox greenDark">
-						<div class="header">Memory</div>
-						<span class="percent">percent</span>
-                    	<div class="circleStat">
-                    		<input type="text" value="100" class="whiteCircle" />
-						</div>
-						<div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-
-				<div class="span2 noMargin" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox pink">
-						<div class="header">CPU</div>
-						<span class="percent">percent</span>
-                    	<div class="circleStat">
-                    		<input type="text" value="83" class="whiteCircle" />
-						</div>
-						<div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GHz</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">3.2</span>
-								<span class="unit">GHz</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-
-				<div class="span2" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox orange">
-						<div class="header">Memory</div>
-						<span class="percent">percent</span>
-                    	<div class="circleStat">
-                    		<input type="text" value="100" class="whiteCircle" />
-						</div>
-						<div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-
-				<div class="span2" onTablet="span4" onDesktop="span2">
-                	<div class="circleStatsItemBox greenLight">
-						<div class="header">Memory</div>
-						<span class="percent">percent</span>
-                    	<div class="circleStat">
-                    		<input type="text" value="100" class="whiteCircle" />
-						</div>
-						<div class="footer">
-							<span class="count">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>
-							<span class="sep"> / </span>
-							<span class="value">
-								<span class="number">64</span>
-								<span class="unit">GB</span>
-							</span>	
-						</div>
-                	</div>
-				</div>
-						
-			</div>		
-						
-			<div class="row-fluid">
-				
-				<div class="widget blue span5" onTablet="span6" onDesktop="span5">
-					
-					<h2><span class="glyphicons globe"><i></i></span> Demographics</h2>
-					
-					<hr>
-					
-					<div class="content">
-						
-						<div class="verticalChart">
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>37%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">US</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>16%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">PL</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>12%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">GB</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>9%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">DE</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>7%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">NL</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>6%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">CA</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>5%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">FI</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>4%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">RU</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>3%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">AU</div>
-							
-							</div>
-							
-							<div class="singleBar">
-							
-								<div class="bar">
-								
-									<div class="value">
-										<span>1%</span>
-									</div>
-								
-								</div>
-								
-								<div class="title">N/A</div>
-							
-							</div>	
-							
-							<div class="clearfix"></div>
-							
-						</div>
-					
-					</div>
-					
-				</div><!--/span-->
-				
-				<div class="widget span3 red" onTablet="span6" onDesktop="span3">
-					
-					<h2><span class="glyphicons pie_chart"><i></i></span> Browsers</h2>
-					
-					<hr>
-					
-					<div class="content">
-						
-						<div class="browserStat big">
-							<img src="img/browser-chrome-big.png" alt="Chrome">
-							<span>34%</span>
-						</div>
-						<div class="browserStat big">
-							<img src="img/browser-firefox-big.png" alt="Firefox">
-							<span>34%</span>
-						</div>
-						<div class="browserStat">
-							<img src="img/browser-ie.png" alt="Internet Explorer">
-							<span>34%</span>
-						</div>
-						<div class="browserStat">
-							<img src="img/browser-safari.png" alt="Safari">
-							<span>34%</span>
-						</div>
-						<div class="browserStat">
-							<img src="img/browser-opera.png" alt="Opera">
-							<span>34%</span>
-						</div>	
-								
-						
-					</div>
-				</div>
-				
-				<div class="widget yellow span4 noMargin" onTablet="span12" onDesktop="span4">
-					<h2><span class="glyphicons fire"><i></i></span> Server Load</h2>
-					<hr>
-					<div class="content">
-						 <div id="serverLoad2" style="height:224px;"></div>
-					</div>
-				</div>
-			
-			</div>
-			
-			<div class="row-fluid">
-				
-				<div class="box black span4" onTablet="span6" onDesktop="span4">
-					<div class="box-header">
-						<h2><i class="halflings-icon white list"></i><span class="break"></span>Weekly Stat</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<ul class="dashboard-list metro">
-							<li>
-								<a href="#">
-									<i class="icon-arrow-up green"></i>                               
-									<strong>92</strong>
-									New Comments                                    
-								</a>
-							</li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-down red"></i>
-							  <strong>15</strong>
-							  New Registrations
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-minus blue"></i>
-							  <strong>36</strong>
-							  New Articles                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-comment yellow"></i>
-							  <strong>45</strong>
-							  User reviews                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-up green"></i>                               
-							  <strong>112</strong>
-							  New Comments                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-arrow-down red"></i>
-							  <strong>31</strong>
-							  New Registrations
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-minus blue"></i>
-							  <strong>93</strong>
-							  New Articles                                    
-							</a>
-						  </li>
-						  <li>
-							<a href="#">
-							  <i class="icon-comment yellow"></i>
-							  <strong>256</strong>
-							  User reviews                                    
-							</a>
-						  </li>
-						</ul>
-					</div>
-				</div><!--/span-->
-				
-				<div class="box black span4" onTablet="span6" onDesktop="span4">
-					<div class="box-header">
-						<h2><i class="halflings-icon white user"></i><span class="break"></span>Last Users</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<ul class="dashboard-list metro">
-							<li class="green">
-								<a href="#">
-									<img class="avatar" alt="Dennis Ji" src="img/avatar.jpg">
-								</a>
-								<strong>Name:</strong> Dennis Ji<br>
-								<strong>Since:</strong> Jul 25, 2012 11:09<br>
-								<strong>Status:</strong> Approved             
-							</li>
-							<li class="yellow">
-								<a href="#">
-									<img class="avatar" alt="Dennis Ji" src="img/avatar.jpg">
-								</a>
-								<strong>Name:</strong> Dennis Ji<br>
-								<strong>Since:</strong> Jul 25, 2012 11:09<br>
-								<strong>Status:</strong> Pending                                
-							</li>
-							<li class="red">
-								<a href="#">
-									<img class="avatar" alt="Dennis Ji" src="img/avatar.jpg">
-								</a>
-								<strong>Name:</strong> Dennis Ji<br>
-								<strong>Since:</strong> Jul 25, 2012 11:09<br>
-								<strong>Status:</strong> Banned                                  
-							</li>
-							<li class="blue">
-								<a href="#">
-									<img class="avatar" alt="Dennis Ji" src="img/avatar.jpg">
-								</a>
-								<strong>Name:</strong> Dennis Ji<br>
-								<strong>Since:</strong> Jul 25, 2012 11:09<br>
-								<strong>Status:</strong> Updated                                 
-							</li>
-						</ul>
-					</div>
-				</div><!--/span-->
-				
-				<div class="box black span4 noMargin" onTablet="span12" onDesktop="span4">
-					<div class="box-header">
-						<h2><i class="halflings-icon white check"></i><span class="break"></span>To Do List</h2>
-						<div class="box-icon">
-							<a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
-							<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-							<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-						</div>
-					</div>
-					<div class="box-content">
-						<div class="todo metro">
-							<ul class="todo-list">
-								<li class="red">
-									<a class="action icon-check-empty" href="#"></a>	
-									Windows Phone 8 App 
-									<strong>today</strong>
-								</li>
-								<li class="red">
-									<a class="action icon-check-empty" href="#"></a>
-									New frontend layout
-									<strong>today</strong>
-								</li>
-								<li class="yellow">
-									<a class="action icon-check-empty" href="#"></a>
-									Hire developers
-									<strong>tommorow</strong>
-								</li>
-								<li class="yellow">
-									<a class="action icon-check-empty" href="#"></a>
-									Windows Phone 8 App
-									<strong>tommorow</strong>
-								</li>
-								<li class="green">
-									<a class="action icon-check-empty" href="#"></a>
-									New frontend layout
-									<strong>this week</strong>
-								</li>
-								<li class="green">
-									<a class="action icon-check-empty" href="#"></a>
-									Hire developers
-									<strong>this week</strong>
-								</li>
-								<li class="blue">
-									<a class="action icon-check-empty" href="#"></a>
-									New frontend layout
-									<strong>this month</strong>
-								</li>
-								<li class="blue">
-									<a class="action icon-check-empty" href="#"></a>
-									Hire developers
-									<strong>this month</strong>
-								</li>
-							</ul>
-						</div>	
-					</div>
-				</div>
-			
-			</div>
-			
-			<div class="row-fluid">	
-
-				<a class="quick-button metro yellow span2">
-					<i class="icon-group"></i>
-					<p>Users</p>
-					<span class="badge">237</span>
-				</a>
-				<a class="quick-button metro red span2">
-					<i class="icon-comments-alt"></i>
-					<p>Comments</p>
-					<span class="badge">46</span>
-				</a>
-				<a class="quick-button metro blue span2">
-					<i class="icon-shopping-cart"></i>
-					<p>Orders</p>
-					<span class="badge">13</span>
-				</a>
-				<a class="quick-button metro green span2">
-					<i class="icon-barcode"></i>
-					<p>Products</p>
-				</a>
-				<a class="quick-button metro pink span2">
-					<i class="icon-envelope"></i>
-					<p>Messages</p>
-					<span class="badge">88</span>
-				</a>
-				<a class="quick-button metro black span2">
-					<i class="icon-calendar"></i>
-					<p>Calendar</p>
-				</a>
-				
-				<div class="clearfix"></div>
-								
-			</div><!--/row-->
-			
-       
-
-	</div><!--/.fluid-container-->
-	
-			<!-- end: Content -->
-		</div><!--/#content.span10-->
-		</div><!--/fluid-row-->
-
+        
 @endsection

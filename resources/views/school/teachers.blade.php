@@ -36,25 +36,25 @@
 					</form>
 				</li>
 			</ul>
-			<div class="w3-container">
-					<div class="w3-card-4 test" style="width:92%;max-width:300px;">
+			<div class="w3-container w3-row">
+					<div class="w3-card-4  l3 m4 s12" style="width:92%;max-width:200px;">
                         <img src="{{asset('img/img_avatar3.png')}}" alt="Avatar" style="width:100%;opacity:0.85">
                         <div class="w3-container">
-                    <h4><b>John</b></h4>    
+                        <h4><b>John</b></h4>    
                         <p>Head Teacher</p>    
                         </div>
                     </div>
-                    <div class="w3-card-4 test" style="width:92%;max-width:300px;">
+                    <div class="w3-card-4  l3 m4 s12" style="width:92%;max-width:200px;">
                         <img src="{{asset('img/img_avatar3.png')}}" alt="Avatar" style="width:100%;opacity:0.85">
                         <div class="w3-container">
-                    <h4><b>John</b></h4>    
+                        <h4><b>John</b></h4>    
                         <p>Head Teacher</p>    
                         </div>
                     </div>		
-                    <div class="w3-card-4 test" style="width:92%;max-width:300px;">
+                    <div class="w3-card-4  l3 m4 s12" style="width:92%;max-width:200px;">
                         <img src="{{asset('img/img_avatar3.png')}}" alt="Avatar" style="width:100%;opacity:0.85">
                         <div class="w3-container">
-                    <h4><b>John</b></h4>    
+                        <h4><b>John</b></h4>    
                         <p>Head Teacher</p>    
                         </div>
                     </div>			
